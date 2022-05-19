@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import {ViewModel} from "../utils/ViewModel.js";
-import {PreviewViewModel} from "../preview/PreviewViewModel.js";
-import {Link} from "../Link.js";
+import { ViewModel } from "../utils/ViewModel.js";
+import { PreviewViewModel } from "../preview/PreviewViewModel.js";
+import { Link } from "../Link.js";
 
 export class CreateLinkViewModel extends ViewModel {
     constructor(options) {
