@@ -14,30 +14,30 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import {TemplateView} from "./utils/TemplateView.js";
-import {OpenLinkView} from "./open/OpenLinkView.js";
-import {CreateLinkView} from "./create/CreateLinkView.js";
-import {LoadServerPolicyView} from "./policy/LoadServerPolicyView.js";
-import {DisclaimerView} from "./disclaimer/DisclaimerView.js";
-import {InvalidUrlView} from "./InvalidUrlView.js";
+import { TemplateView } from "./utils/TemplateView.js";
+import { OpenLinkView } from "./open/OpenLinkView.js";
+import { CreateLinkView } from "./create/CreateLinkView.js";
+import { LoadServerPolicyView } from "./policy/LoadServerPolicyView.js";
+import { DisclaimerView } from "./disclaimer/DisclaimerView.js";
+import { InvalidUrlView } from "./InvalidUrlView.js";
 
 export class RootView extends TemplateView {
     render(t, vm) {
-        return t.div({className: "RootView"}, [
+        return t.div({ className: "RootView" }, [
             t.mapView(vm => vm.invalidUrlViewModel, invalidVM => invalidVM ? new InvalidUrlView(invalidVM) : null),
             t.mapView(vm => vm.showDisclaimer, disclaimer => disclaimer ? new DisclaimerView() : null),
             t.mapView(vm => vm.openLinkViewModel, vm => vm ? new OpenLinkView(vm) : null),
             t.mapView(vm => vm.createLinkViewModel, vm => vm ? new CreateLinkView(vm) : null),
             t.mapView(vm => vm.loadServerPolicyViewModel, vm => vm ? new LoadServerPolicyView(vm) : null),
-            t.div({className: "footer"}, [
-                t.p(t.img({src: "images/matrix-logo.svg"})),
-                t.p(["This invite uses ", externalLink(t, "https://matrix.org", "Matrix"), ", an open network for secure, decentralized communication."]),
-                t.ul({className: "links"}, [
-                    t.li(externalLink(t, "https://github.com/matrix-org/matrix.to", "GitHub project")),
+            t.div({ className: "footer" }, [
+                t.p(t.img({ src: "images/matrix-logo.svg" })),
+                t.p(["This invite uses ", externalLink(t, "https://dialogmessenger.ru", "Dialog"), ", an open network for secure, decentralized communication."]),
+                t.ul({ className: "links" }, [
+                    t.li(externalLink(t, "https://vladislavsorokin.ru", "VS")),
                     t.li(externalLink(t, "https://github.com/matrix-org/matrix.to/tree/main/src/open/clients", "Add your app")),
-                    t.li({className: {hidden: vm => !vm.hasPreferences}},
-                        t.button({className: "text", onClick: () => vm.clearPreferences()}, "Clear preferences")),
-                    t.li(t.a({href: "#/disclaimer/"}, "Disclaimer")),
+                    t.li({ className: { hidden: vm => !vm.hasPreferences } },
+                        t.button({ className: "text", onClick: () => vm.clearPreferences() }, "Clear preferences")),
+                    t.li(t.a({ href: "#/disclaimer/" }, "Disclaimer")),
                 ])
             ])
         ]);
@@ -45,5 +45,5 @@ export class RootView extends TemplateView {
 }
 
 function externalLink(t, href, label) {
-    return t.a({href, target: "_blank", rel: "noopener noreferrer"}, label);
+    return t.a({ href, target: "_blank", rel: "noopener noreferrer" }, label);
 }
