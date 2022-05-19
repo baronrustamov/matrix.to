@@ -14,14 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import {Link} from "./Link.js";
-import {ViewModel} from "./utils/ViewModel.js";
-import {OpenLinkViewModel} from "./open/OpenLinkViewModel.js";
-import {createClients} from "./open/clients/index.js";
-import {CreateLinkViewModel} from "./create/CreateLinkViewModel.js";
-import {LoadServerPolicyViewModel} from "./policy/LoadServerPolicyViewModel.js";
-import {InvalidUrlViewModel} from "./InvalidUrlViewModel.js";
-import {Platform} from "./Platform.js";
+import { Link } from "./Link.js";
+import { ViewModel } from "./utils/ViewModel.js";
+import { OpenLinkViewModel } from "./open/OpenLinkViewModel.js";
+import { createClients } from "./open/clients/index.js";
+import { CreateLinkViewModel } from "./create/CreateLinkViewModel.js";
+import { LoadServerPolicyViewModel } from "./policy/LoadServerPolicyViewModel.js";
+import { InvalidUrlViewModel } from "./InvalidUrlViewModel.js";
+import { Platform } from "./Platform.js";
 
 export class RootViewModel extends ViewModel {
     constructor(options) {
@@ -68,12 +68,12 @@ export class RootViewModel extends ViewModel {
         if (hash.startsWith("#/policy/")) {
             const server = hash.substr(9);
             this._updateChildVMs(null, oldLink);
-            this.loadServerPolicyViewModel = new LoadServerPolicyViewModel(this.childOptions({server}));
+            this.loadServerPolicyViewModel = new LoadServerPolicyViewModel(this.childOptions({ server }));
             this.loadServerPolicyViewModel.load();
         } else if (hash.startsWith("#/disclaimer/")) {
             this._updateChildVMs(null, oldLink);
             this.showDisclaimer = true;
-        }  else if (hash === "" || hash === "#" || hash === "#/") {
+        } else if (hash === "" || hash === "#" || hash === "#/") {
             this._updateChildVMs(null, oldLink);
             this.createLinkViewModel = new CreateLinkViewModel(this.childOptions());
         } else if (newLink = Link.parseFragment(hash)) {
